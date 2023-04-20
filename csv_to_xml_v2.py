@@ -54,10 +54,10 @@ def generateXml(key):
                 nvpd_dictionary[row[0]][row[1]] = row[2]
 
             for nvpd, item in nvpd_dictionary.items():
-                xmlfile.write(f"<group>\n\t<NVPD>{nvpd}</NVPD>\n")
+                xmlfile.write(f"<group>\n\t<{headers[0]}>{nvpd}</{headers[0]}>\n")
                 for value in item:
-                    xmlfile.write(f"\t\t<name>{value}</name>\n")
-                    xmlfile.write(f"\t\t<value>{item[value]}</value>\n\n")
+                    xmlfile.write(f"\t\t<{headers[1].lower()}>{value}</{headers[1].lower()}>\n")
+                    xmlfile.write(f"\t\t<{headers[2].lower()}>{item[value]}</{headers[2].lower()}>\n\n")
                 xmlfile.write("</group>\n")
 
             xmlfile.write(f"</{key}>".replace(" ", "-"))
